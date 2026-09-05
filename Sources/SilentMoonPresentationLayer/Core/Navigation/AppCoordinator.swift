@@ -10,19 +10,18 @@ import SilentMoonNetwork
 import SilentMoonDomain
 
 public final class AppCoordinator: Coordinator {
-    var childCoordinators: [Coordinator] = []
+    public var childCoordinators: [Coordinator] = []
     private let window: UIWindow
     private let navigationController = UINavigationController()
     
     private let diContainer: AppDiContainer
     
-    init(window: UIWindow,  diContainer: AppDiContainer) {
+    public init(window: UIWindow, diContainer: AppDiContainer) {
         self.window = window
-        
         self.diContainer = diContainer
     }
 
-    func start() {
+    public func start() {
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
 
