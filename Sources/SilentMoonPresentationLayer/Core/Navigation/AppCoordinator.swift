@@ -9,7 +9,7 @@ import UIKit
 import SilentMoonNetwork
 import SilentMoonDomain
 
-final class AppCoordinator: Coordinator {
+public final class AppCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     private let window: UIWindow
     private let navigationController = UINavigationController()
