@@ -1,0 +1,33 @@
+//
+//  AuthFactory.swift
+//  SilentMoon
+//
+//  Created by Kerimov Qehreman on 11.08.26.
+//
+
+import UIKit
+
+@MainActor
+enum AuthFactory {
+
+    static func facebookButton() -> AppButton {
+        AppButton(
+            title: AppStrings.continueWithFacebook.letters,
+            backgroundColor: .accent,
+            titleColor: .buttonTitle,
+            image: UIImage(named: "Vector"),
+            imagePosition: .leading
+        )
+    }
+
+    static func googleButton() -> AppButton {
+        AppButton(
+            title: AppStrings.continueWithGoogle.letters,
+            backgroundColor: .backgroundSecondary,
+            titleColor: .textPrimary,
+            image: UIImage(named: "google"),
+            imagePosition: .leading,
+            borderColor: .textSecondary
+        )
+    }
+}
