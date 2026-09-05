@@ -83,7 +83,7 @@ final class MeditateViewController: UIViewController {
     private lazy var dailyPlayButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = .white
-        button.tintColor = .dailycolor
+        button.tintColor = AssetColors.dailyColor.color
         button.layer.cornerRadius = 20
         button.setImage(UIImage(systemName: "play.fill"), for: .normal)
         button.isUserInteractionEnabled = false

@@ -28,7 +28,7 @@ enum AssetColors : String{
     case errorColor = "ErrorColor"
     case wrongColor = "WrongColor"
     case colorIndigo = "colorIndigo"
-    case datepicker = " datePicker"
+    case datepicker = "datepicker"
     case dailyColor = "dailycolor"
     case sectionColor = "SectionColor"
     case ellipsesColor = "ellipsesColor"
@@ -48,6 +48,27 @@ extension UIColor  {
     func assetColor( _ colorName : AssetColors) -> UIColor {
         return colorName.color
     }
+    
+}
+
+
+extension UIColor {
+    static var background: UIColor { AssetColors.background.color }
+    static var backgroundSecondary: UIColor { AssetColors.backgroundSecondary.color }
+    static var textPrimary: UIColor { AssetColors.textPrimary.color }
+    static var textSecondary: UIColor { AssetColors.textSecondary.color }
+    static var accent: UIColor { AssetColors.accent.color }
+    static var buttonTitle: UIColor { AssetColors.buttonTitle.color }
+    static var errorColor: UIColor { AssetColors.errorColor.color }
+    static var wrongColor: UIColor { AssetColors.wrongColor.color }
+    static var colorIndigo: UIColor { AssetColors.colorIndigo.color }
+    static var datepicker: UIColor { AssetColors.datepicker.color }
+    static var dailyColor: UIColor { AssetColors.dailyColor.color }
+    static var sectionColor: UIColor { AssetColors.sectionColor.color }
+    static var ellipsesColor: UIColor { AssetColors.ellipsesColor.color }
+    static var sleepModeColor: UIColor { AssetColors.sleepModeColor.color }
+    static var darksleepmusic: UIColor { AssetColors.darksleepmusic.color }
+    static var iceBlueColor: UIColor { AssetColors.iceBlueColor.color }
     
 }
 
@@ -101,5 +122,3 @@ enum AppRadius{
             }
         }
     }
-
-

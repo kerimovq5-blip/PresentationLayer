@@ -13,7 +13,7 @@ private lazy var imageView: UIImageView = {
     let imageView = UIImageView()
     imageView.contentMode = .scaleAspectFit
     
-    imageView.backgroundColor = .dailycolor
+    imageView.backgroundColor = AssetColors.dailyColor.color
     return imageView
     }()
     private lazy var titleLabel: UILabel = {

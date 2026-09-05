@@ -5,7 +5,7 @@
 //  Created by Kerimov Qehreman on 11.08.26.
 //
 import UIKit
-
+@MainActor
 enum ComposinalLayoutFactory {
 
     static func twoColumnMasonry(
