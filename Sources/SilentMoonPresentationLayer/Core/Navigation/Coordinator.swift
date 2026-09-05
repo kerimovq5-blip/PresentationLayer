@@ -7,11 +7,11 @@
 import UIKit
 import Foundation
 @MainActor
-protocol Coordinator: AnyObject {
-    func start()
+public protocol Coordinator: AnyObject {
+     func start()
 }
 @MainActor
-protocol ContentNavigating: AnyObject {
+public protocol ContentNavigating: AnyObject {
     func showMorning()
     func showMusicPage(item : String)
     func showMusicPage2(item : String)

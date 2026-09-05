@@ -1,14 +1,14 @@
 import UIKit
 import SilentMoonDomain
 import SilentMoonNetwork
-final class AuthCoordinator: Coordinator, ContentNavigating {
+public final class AuthCoordinator: Coordinator, ContentNavigating {
 
-    var navigationController: UINavigationController
-    var onFlowFinished: (() -> Void)?
-
+    public var navigationController: UINavigationController
+    public var onFlowFinished: (() -> Void)?
+    
     private let repository: SilentMoonRepository
 
-    init(
+    public  init(
         navigationController: UINavigationController,
         repository: SilentMoonRepository
     ) {
@@ -16,34 +16,34 @@ final class AuthCoordinator: Coordinator, ContentNavigating {
         self.repository = repository
     }
 
-    func start() {
+    public func start() {
         let controller = ViewController()
         controller.coordinator = self
         navigationController.setViewControllers([controller], animated: false)
     }
 
-    func showLogin() {
+    public  func showLogin() {
         let viewModel = LoginViewModel(usecases: LogInUseCaseImpl(repository: repository))
         let controller = LogInViewController(viewModel: viewModel)
         controller.coordinator = self
         navigationController.pushViewController(controller, animated: true)
     }
 
-    func showSignUp() {
+    public func showSignUp() {
         let viewModel = SignUpViewModel(usecases: AuthUseCasesImpl(repository: repository))
         let controller = SignUpViewController(viewModel: viewModel)
         controller.coordinator = self
         navigationController.pushViewController(controller, animated: true)
     }
 
-    func getStarted(name: String) {
+    public  func getStarted(name: String) {
         let controller = GetStartedController()
         controller.userName = name
         controller.coordinator = self
         navigationController.pushViewController(controller, animated: true)
     }
 
-    func showOtpVerification(email: String, name: String = "") {
+    public func showOtpVerification(email: String, name: String = "") {
         let viewModel = OtpViewModel(usecases: AuthUseCasesImpl(repository: repository))
         let controller = OtpViewController(viewModel: viewModel)
         controller.email = email
@@ -52,7 +52,7 @@ final class AuthCoordinator: Coordinator, ContentNavigating {
         navigationController.pushViewController(controller, animated: true)
     }
 
-    func showTopics() {
+    public func showTopics() {
         let viewModel = ChooseTopicViewModel(
             usecases: TopicsUseCasesImpl(repository: repository)
         )
@@ -64,7 +64,7 @@ final class AuthCoordinator: Coordinator, ContentNavigating {
             animated: true
         )
     }
-    func showReminder() {
+    public   func showReminder() {
         let stateModel = ReminderViewModels(
             usecases: ReminderUseCasesImpl(repository: repository)
         )
@@ -73,58 +73,58 @@ final class AuthCoordinator: Coordinator, ContentNavigating {
           navigationController.pushViewController(controller, animated: true)
       }
 
-    func showMorning() {
+    public  func showMorning() {
         let controller = CoursesDetailViewController()
         controller.coordinator = self
         navigationController.pushViewController(controller, animated: true)
     }
 
-    func backToMain() {
+    public  func backToMain() {
         navigationController.popToRootViewController(animated: true)
     }
 
-    func finishAuth() {
+    public func finishAuth() {
         onFlowFinished?()
     }
 
-    func showMusicPage(item: String) {
+    public func showMusicPage(item: String) {
         let controller = MusicPageController()
         controller.titleLabel = item
         controller.coordinator = self
         navigationController.pushViewController(controller, animated: true)
     }
 
-    func showMusicPage2(item: String) {
+    public  func showMusicPage2(item: String) {
         let controller = MusicSleepPageController()
         controller.titleLabel = item
         controller.coordinator = self
         navigationController.pushViewController(controller, animated: true)
     }
 
-    func showMusicList() {
+    public func showMusicList() {
         let controller = MusicListViewController()
         controller.coordinator = self
         navigationController.pushViewController(controller, animated: true)
     }
 
-    func showSearchPage() {
+    public  func showSearchPage() {
         let viewModel = SearchViewModel(usecases: SearchUseCaseImpl(repository: repository))
         let controller = SearchPageController(viewModel: viewModel)
         controller.coordinator = self
         navigationController.pushViewController(controller, animated: true)
     }
 
-    func playOptionPage() {
+    public  func playOptionPage() {
         let controller = PlayOptionViewController()
         controller.coordinator = self
         navigationController.pushViewController(controller, animated: true)
     }
 
-    func dismissMusicPage() {
+    public func dismissMusicPage() {
         navigationController.popViewController(animated: true)
     }
 
-    func showSleepyStory() {
+    public  func showSleepyStory() {
         let controller = SleepyStoryController()
         controller.coordinator = self
         navigationController.pushViewController(controller, animated: true)
