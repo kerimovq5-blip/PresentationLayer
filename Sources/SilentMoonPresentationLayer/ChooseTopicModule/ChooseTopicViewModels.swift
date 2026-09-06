@@ -22,6 +22,8 @@ final class ChooseTopicViewModel {
     
     var onStateChange: (() -> Void)?
     
+    weak var navigation: ChooseTopicNavigation?
+    
     private let usecases: TopicsUseCases
     
     init(usecases: TopicsUseCases) {
@@ -45,6 +47,7 @@ final class ChooseTopicViewModel {
         switch result {
         case .success:
             self.state = .success
+            self.navigation?.showReminder()
         case .failure(let error):
             let appError = self.asAppError(error)
             self.state = .requestFailed(appError)

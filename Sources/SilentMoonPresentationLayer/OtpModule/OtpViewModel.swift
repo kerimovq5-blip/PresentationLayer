@@ -34,6 +34,9 @@ public final class OtpViewModel {
     }
     
     public var onStateChange: (() -> Void)?
+    
+    public  weak var navigation : OtpNavigation?
+    
     public var onVerifySucceeded: ((_ userName: String) -> Void)?
 
     public init(
@@ -64,7 +67,7 @@ public final class OtpViewModel {
             switch result {
             case .success:
                 self.state = .verifySucceeded
-                self.onVerifySucceeded?(self.userName)
+                self.navigation?.getStarted(name: self.userName)
             case .failure(let error):
                 self.state = .verifyFailed(self.asAppError(error))
             }

@@ -31,6 +31,8 @@ final class SignUpViewModel {
     
     var onStateChange: (() -> Void)?
     var onRegisterSucceeded: ((_ email: String, _ name: String) -> Void)?
+    
+   public weak var navigation : SingUpNavigation?
 
     private let usecases: AuthUseCases
 
@@ -59,7 +61,9 @@ final class SignUpViewModel {
             handleRegister(result: result)
         }
     }
-    
+    func logInTapped() {
+        navigation?.showLogin()
+    }
     private func handleRegister(result: Result<RegisterResponseEntity, any Error>) {
         switch result {
         case .success:

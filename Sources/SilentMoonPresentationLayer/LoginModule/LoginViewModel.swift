@@ -29,6 +29,8 @@ final class LoginViewModel {
     
     var onEmailNotVerified: ((_ email: String) -> Void)?
     
+   public weak var navigation : LoginNavigation?
+    
     private let usecases: LogInUseCase
     
     init(usecases: LogInUseCase ) {
@@ -51,6 +53,10 @@ final class LoginViewModel {
             
             handleLogin(result: result)
         }
+    }
+    
+    func signUpTapped() {
+        navigation?.showSignUp()
     }
     private func handleLogin(result: Result<AuthResponseEntity, Error>) {
         switch result {

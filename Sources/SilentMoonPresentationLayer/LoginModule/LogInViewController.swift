@@ -4,7 +4,6 @@ import SilentMoonNetwork
 
 final class LogInViewController: UIViewController {
 
-    weak var coordinator: AuthCoordinator?
     private let viewModel: LoginViewModel
     private var isPasswordVisible = false
 
@@ -126,12 +125,6 @@ final class LogInViewController: UIViewController {
                 self?.render()
             }
         }
-        
-        viewModel.onEmailNotVerified = { [weak self] email in
-            DispatchQueue.main.async {
-                self?.coordinator?.showOtpVerification(email: email)
-            }
-        }
     }
 
     private func render() {
@@ -142,7 +135,6 @@ final class LogInViewController: UIViewController {
             showBlurLoading()
         case .success:
             hideBlurLoading()
-            coordinator?.finishAuth()
         case .invalidInput(let message):
             hideBlurLoading()
             showAlert(message: message)
@@ -163,7 +155,7 @@ final class LogInViewController: UIViewController {
     }
 
     @objc private func signUpTapped() {
-        coordinator?.showSignUp()
+        viewModel.signUpTapped()
     }
 
     @objc private func forgotPasswordTapped() {

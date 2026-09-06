@@ -1,7 +1,16 @@
 import UIKit
 
 final class ViewController: UIViewController {
-    var coordinator: AuthCoordinator?
+    private let viewModel: StartViewModel
+
+    init(viewModel: StartViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     private lazy var logoLabel: UILabel = {
         let label = UILabel()
@@ -71,7 +80,7 @@ final class ViewController: UIViewController {
     
     private lazy var signUpButton: AppButton = {
         let button = AppButton(title: AppStrings.signUpButton.letters)
-        button.onTap = { [weak self] in self?.coordinator?.showSignUp() }
+        button.onTap = { [weak self] in self?.viewModel.singUpTap() }
         return button
     }()
     
@@ -155,6 +164,6 @@ final class ViewController: UIViewController {
     }
     
     @objc private func logInTapped() {
-        coordinator?.showLogin()
+        viewModel.logInTapped()
     }
 }

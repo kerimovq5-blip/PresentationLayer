@@ -2,7 +2,16 @@ import UIKit
 
 final class GetStartedController: UIViewController {
     
-    var coordinator: AuthCoordinator?
+    private let viewModel: GetStartedViewModel
+    
+    init(viewModel : GetStartedViewModel){
+    self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     var userName: String = ""
     
     private lazy var logoLabel: UILabel = {
@@ -172,10 +181,10 @@ final class GetStartedController: UIViewController {
     }
     
     @objc private func logOutTapped() {
-        coordinator?.backToMain()
+        viewModel.logOutTapped()
     }
     
     @objc private func getStartedTapped() {
-        coordinator?.showTopics()
+        viewModel.getStartedTapped()
     }
 }

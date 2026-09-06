@@ -1,14 +1,16 @@
 import UIKit
 import SilentMoonDomain
 import SilentMoonNetwork
-public final class AuthCoordinator: Coordinator, ContentNavigating {
 
-    public var navigationController: UINavigationController
-    public var onFlowFinished: (() -> Void)?
-    
-    private let repository: SilentMoonRepository
+@MainActor
+final class AuthCoordinator: Coordinator{
 
-    public  init(
+    var navigationController: UINavigationController
+    var onFlowFinished: (() -> Void)?
+
+    let repository: SilentMoonRepository
+
+    init(
         navigationController: UINavigationController,
         repository: SilentMoonRepository
     ) {
@@ -16,55 +18,37 @@ public final class AuthCoordinator: Coordinator, ContentNavigating {
         self.repository = repository
     }
 
-    public func start() {
-        let controller = ViewController()
-        controller.coordinator = self
+    func start() {
+        let viewModel = StartViewModel()
+        viewModel.navigation = self
+        let controller = ViewController(viewModel: viewModel)
         navigationController.setViewControllers([controller], animated: false)
     }
+}
 
-    public  func showLogin() {
-        let viewModel = LoginViewModel(usecases: LogInUseCaseImpl(repository: repository))
-        let controller = LogInViewController(viewModel: viewModel)
-        controller.coordinator = self
-        navigationController.pushViewController(controller, animated: true)
-    }
 
-    public func showSignUp() {
-        let viewModel = SignUpViewModel(usecases: AuthUseCasesImpl(repository: repository))
-        let controller = SignUpViewController(viewModel: viewModel)
-        controller.coordinator = self
-        navigationController.pushViewController(controller, animated: true)
-    }
 
-    public  func getStarted(name: String) {
-        let controller = GetStartedController()
-        controller.userName = name
-        controller.coordinator = self
-        navigationController.pushViewController(controller, animated: true)
-    }
+extension AuthCoordinator: StartNavigation {
+    
+}
 
-    public func showOtpVerification(email: String, name: String = "") {
-        let viewModel = OtpViewModel(usecases: AuthUseCasesImpl(repository: repository))
-        let controller = OtpViewController(viewModel: viewModel)
-        controller.email = email
-        controller.userName = name
-        controller.coordinator = self
-        navigationController.pushViewController(controller, animated: true)
-    }
 
-    public func showTopics() {
+
+extension AuthCoordinator: ContentNavigating {
+
+    func showTopics() {
         let viewModel = ChooseTopicViewModel(
             usecases: TopicsUseCasesImpl(repository: repository)
         )
+        viewModel.navigation = self
         let controller = ChooseTopicViewController(viewModel: viewModel)
-        controller.coordinator = self
         
         navigationController.pushViewController(
             controller,
             animated: true
         )
     }
-    public   func showReminder() {
+    func showReminder() {
         let stateModel = ReminderViewModels(
             usecases: ReminderUseCasesImpl(repository: repository)
         )
@@ -73,60 +57,121 @@ public final class AuthCoordinator: Coordinator, ContentNavigating {
           navigationController.pushViewController(controller, animated: true)
       }
 
-    public  func showMorning() {
+    func showMorning() {
         let controller = CoursesDetailViewController()
         controller.coordinator = self
         navigationController.pushViewController(controller, animated: true)
     }
 
-    public  func backToMain() {
+    func backToMain() {
         navigationController.popToRootViewController(animated: true)
     }
 
-    public func finishAuth() {
-        onFlowFinished?()
-    }
-
-    public func showMusicPage(item: String) {
+    func showMusicPage(item: String) {
         let controller = MusicPageController()
         controller.titleLabel = item
         controller.coordinator = self
         navigationController.pushViewController(controller, animated: true)
     }
 
-    public  func showMusicPage2(item: String) {
+    func showMusicPage2(item: String) {
         let controller = MusicSleepPageController()
         controller.titleLabel = item
         controller.coordinator = self
         navigationController.pushViewController(controller, animated: true)
     }
 
-    public func showMusicList() {
+    func showMusicList() {
         let controller = MusicListViewController()
         controller.coordinator = self
         navigationController.pushViewController(controller, animated: true)
     }
 
-    public  func showSearchPage() {
+    func showSearchPage() {
         let viewModel = SearchViewModel(usecases: SearchUseCaseImpl(repository: repository))
         let controller = SearchPageController(viewModel: viewModel)
         controller.coordinator = self
         navigationController.pushViewController(controller, animated: true)
     }
 
-    public  func playOptionPage() {
+    func playOptionPage() {
         let controller = PlayOptionViewController()
         controller.coordinator = self
         navigationController.pushViewController(controller, animated: true)
     }
 
-    public func dismissMusicPage() {
+    func dismissMusicPage() {
         navigationController.popViewController(animated: true)
     }
 
-    public  func showSleepyStory() {
+    func showSleepyStory() {
         let controller = SleepyStoryController()
         controller.coordinator = self
         navigationController.pushViewController(controller, animated: true)
     }
+}
+
+
+
+extension AuthCoordinator: GetStartedNavigation {
+    
+}
+
+
+
+extension AuthCoordinator: ChooseTopicNavigation {
+    
+}
+
+
+extension AuthCoordinator: LoginNavigation {
+
+    func showSignUp() {
+        let viewModel = SignUpViewModel(usecases: AuthUseCasesImpl(repository: repository))
+        viewModel.navigation = self
+        let controller = SignUpViewController(viewModel: viewModel)
+        navigationController.pushViewController(controller, animated: true)
+    }
+
+    
+    func showOtpVerification(email: String) {
+        showOtpVerification(email: email, name: "")
+    }
+
+    func finishAuth() {
+        onFlowFinished?()
+    }
+}
+
+
+extension AuthCoordinator: SingUpNavigation {
+
+    func showLogin() {
+        let viewModel = LoginViewModel(usecases: LogInUseCaseImpl(repository: repository))
+        viewModel.navigation = self
+        let controller = LogInViewController(viewModel: viewModel)
+        navigationController.pushViewController(controller, animated: true)
+    }
+
+    func getStarted(name: String) {
+        let viewModel = GetStartedViewModel()
+        viewModel.navigation = self
+        let controller = GetStartedController(viewModel: viewModel)
+        controller.userName = name
+        navigationController.pushViewController(controller, animated: true)
+    }
+}
+
+
+extension AuthCoordinator: OtpNavigation {
+
+    func showOtpVerification(email: String, name: String = "") {
+        let viewModel = OtpViewModel(usecases: AuthUseCasesImpl(repository: repository))
+        viewModel.navigation = self
+        let controller = OtpViewController(viewModel: viewModel)
+        controller.email = email
+        controller.userName = name
+        navigationController.pushViewController(controller, animated: true)
+    }
+    // getStarted(name:) is implemented in the SignUpNavigation extension above.
 }

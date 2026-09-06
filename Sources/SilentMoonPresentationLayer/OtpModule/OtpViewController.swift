@@ -9,7 +9,6 @@ import UIKit
 
 final class OtpViewController: UIViewController {
 
-    weak var coordinator: AuthCoordinator?
     private let viewModel: OtpViewModel
 
     var email: String {
@@ -96,11 +95,7 @@ final class OtpViewController: UIViewController {
                 self?.render()
             }
         }
-        viewModel.onVerifySucceeded = { [weak self] userName in
-            DispatchQueue.main.async {
-                self?.coordinator?.getStarted(name: userName)
-            }
-        }
+        
     }
 
     private func render() {

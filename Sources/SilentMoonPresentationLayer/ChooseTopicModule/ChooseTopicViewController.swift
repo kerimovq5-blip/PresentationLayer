@@ -2,7 +2,7 @@ import UIKit
 
 final class ChooseTopicViewController: UIViewController {
     
-    var coordinator: AuthCoordinator?
+   
     private let viewModel: ChooseTopicViewModel
     private let topics = ChooseTopicModel.all
     private var selectedTopicIds: Set<Int> = []
@@ -96,7 +96,7 @@ final class ChooseTopicViewController: UIViewController {
             setLoading(true)
         case .success:
             setLoading(false)
-            coordinator?.showReminder()
+            
         case .invalidInput(let message):
             setLoading(false)
             showAlert(message: message)

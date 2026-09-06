@@ -2,7 +2,6 @@ import UIKit
 
 final class SignUpViewController: UIViewController {
 
-    weak var coordinator: AuthCoordinator?
     private let viewModel: SignUpViewModel
     private var isPasswordVisible = false
     private var isPrivacyAccepted = false
@@ -167,12 +166,6 @@ final class SignUpViewController: UIViewController {
                 self?.render()
             }
         }
-        viewModel.onRegisterSucceeded = { [weak self] email, name in
-            DispatchQueue.main.async {
-                self?.view.endEditing(true)
-                self?.coordinator?.getStarted(name: name)
-            }
-        }
     }
 
     private func render() {
@@ -207,7 +200,7 @@ final class SignUpViewController: UIViewController {
     }
 
     @objc private func logInTapped() {
-        coordinator?.showLogin()
+        viewModel.logInTapped()
     }
 
     @objc private func privacyPolicyTapped() {
