@@ -7,7 +7,6 @@
 
 import Foundation
 import SilentMoonDomain
-import SilentMoonNetwork
 
 @MainActor
 enum CourseDetailViewModelState {

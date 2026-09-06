@@ -1,6 +1,5 @@
 import UIKit
 import SilentMoonDomain
-import SilentMoonNetwork
 
 public final class LogInViewController: UIViewController {
 

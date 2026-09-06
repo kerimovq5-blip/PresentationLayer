@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SilentMoonNetwork
 import SilentMoonDomain
 
 enum SignUpViewModelState {

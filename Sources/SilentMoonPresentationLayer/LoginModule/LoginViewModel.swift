@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SilentMoonNetwork
 import SilentMoonDomain
 
 enum LoginViewModelState {
@@ -27,7 +26,7 @@ public final class LoginViewModel {
     }
     var onStateChange: (() -> Void)?
     
-    var onEmailNotVerified: ((_ email: String) -> Void)?
+   public var onEmailNotVerified: ((_ email: String) -> Void)?
     
    public weak var navigation : LoginNavigation?
     

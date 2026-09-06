@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SilentMoonNetwork
 
 enum LoadingViewModelState {
     case idle

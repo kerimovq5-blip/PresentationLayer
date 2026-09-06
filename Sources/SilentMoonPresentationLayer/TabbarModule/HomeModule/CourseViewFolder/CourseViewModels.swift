@@ -7,7 +7,7 @@
 
 import Foundation
 import SilentMoonDomain
-import SilentMoonNetwork
+
 @MainActor
 enum CourseViewModelsState {
     case idle

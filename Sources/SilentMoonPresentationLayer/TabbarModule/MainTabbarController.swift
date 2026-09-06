@@ -7,7 +7,6 @@
 
 import UIKit
 import SilentMoonDomain
-import SilentMoonData
 
 @MainActor
 public final class MainTabBarCoordinator: Coordinator {
