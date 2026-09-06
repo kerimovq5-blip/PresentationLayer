@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 final class CoursesDetailViewController: UIViewController {
     var coordinator : ContentNavigating?
     private enum VoiceTab : Int , CaseIterable {
