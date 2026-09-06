@@ -36,7 +36,7 @@ public final class SignUpViewModel {
 
     private let usecases: AuthUseCases
 
-    init (usecases: AuthUseCases) {
+    public  init (usecases: AuthUseCases) {
         self.usecases = usecases
     }
 

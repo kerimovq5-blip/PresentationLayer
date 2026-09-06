@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class OtpViewController: UIViewController {
+public final class OtpViewController: UIViewController {
 
     private let viewModel: OtpViewModel
 
@@ -20,7 +20,7 @@ final class OtpViewController: UIViewController {
         set { viewModel.userName = newValue }
     }
 
-    init(viewModel: OtpViewModel) {
+    public  init(viewModel: OtpViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }

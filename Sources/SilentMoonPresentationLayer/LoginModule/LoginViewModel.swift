@@ -33,7 +33,7 @@ public final class LoginViewModel {
     
     private let usecases: LogInUseCase
     
-    init(usecases: LogInUseCase ) {
+    public init(usecases: LogInUseCase ) {
         self.usecases = usecases
     }
     

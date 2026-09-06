@@ -1,12 +1,12 @@
 import UIKit
 
-final class SignUpViewController: UIViewController {
+public final class SignUpViewController: UIViewController {
 
     private let viewModel: SignUpViewModel
     private var isPasswordVisible = false
     private var isPrivacyAccepted = false
 
-    init(viewModel: SignUpViewModel) {
+    public init(viewModel: SignUpViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }

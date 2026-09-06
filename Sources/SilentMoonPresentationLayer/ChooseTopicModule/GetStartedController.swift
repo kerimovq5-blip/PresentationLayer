@@ -1,10 +1,10 @@
 import UIKit
 
-final class GetStartedController: UIViewController {
+public final class GetStartedController: UIViewController {
     
     private let viewModel: GetStartedViewModel
     
-    init(viewModel : GetStartedViewModel){
+    public init(viewModel : GetStartedViewModel){
     self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }

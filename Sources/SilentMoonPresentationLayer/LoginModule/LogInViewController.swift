@@ -2,12 +2,12 @@ import UIKit
 import SilentMoonDomain
 import SilentMoonNetwork
 
-final class LogInViewController: UIViewController {
+public final class LogInViewController: UIViewController {
 
     private let viewModel: LoginViewModel
     private var isPasswordVisible = false
 
-    init(viewModel: LoginViewModel) {
+    public init(viewModel: LoginViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }

@@ -29,7 +29,7 @@ public final class OtpViewModel {
 
     private let usecases: AuthUseCases
 
-    public private(set) var state: OtpViewModelState = .idle {
+     private(set) var state: OtpViewModelState = .idle {
         didSet { onStateChange?() }
     }
     

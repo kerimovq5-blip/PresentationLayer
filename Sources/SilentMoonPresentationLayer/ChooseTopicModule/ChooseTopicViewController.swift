@@ -7,7 +7,7 @@ final class ChooseTopicViewController: UIViewController {
     private let topics = ChooseTopicModel.all
     private var selectedTopicIds: Set<Int> = []
     
-    init(viewModel: ChooseTopicViewModel) {
+    public init(viewModel: ChooseTopicViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }

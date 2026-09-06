@@ -34,7 +34,7 @@ final class ReminderViewModels {
         return formatter
     }()
     
-    init(usecases: ReminderUseCases) {
+    public init(usecases: ReminderUseCases) {
         self.usecases = usecases
     }
     

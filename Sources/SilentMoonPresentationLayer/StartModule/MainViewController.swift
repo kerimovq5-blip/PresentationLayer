@@ -1,9 +1,9 @@
 import UIKit
 
-final class ViewController: UIViewController {
+public final class ViewController: UIViewController {
     private let viewModel: StartViewModel
 
-    init(viewModel: StartViewModel) {
+    public  init(viewModel: StartViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
