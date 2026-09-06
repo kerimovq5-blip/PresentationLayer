@@ -11,7 +11,7 @@ import SilentMoonData
 
 @MainActor
 public final class MainTabBarCoordinator: Coordinator {
-    public var childCoordinators: [Coordinator] = []
+    public var childCoordinators: [any Coordinator] = []
     public let tabBarController: UITabBarController
     public var onLogout: (() -> Void)?
 
