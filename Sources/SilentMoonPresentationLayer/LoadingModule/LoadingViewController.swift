@@ -10,7 +10,7 @@ import UIKit
 public final class LoadingViewController: UIViewController {
     private let viewModel: LoadingViewModel
 
-    var onFinished: (() -> Void)?
+   public var onFinished: (() -> Void)?
 
    public init(viewModel: LoadingViewModel) {
         self.viewModel = viewModel

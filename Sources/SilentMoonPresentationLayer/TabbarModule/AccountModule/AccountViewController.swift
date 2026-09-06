@@ -15,7 +15,7 @@ public final class AccountViewController: UIViewController {
 
     private let repository: SilentMoonRepository
 
-    init(repository: SilentMoonRepository) {
+    public init(repository: SilentMoonRepository) {
         self.repository = repository
         super.init(nibName: nil, bundle: nil)
     }

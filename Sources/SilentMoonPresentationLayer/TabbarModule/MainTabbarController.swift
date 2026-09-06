@@ -11,9 +11,9 @@ import SilentMoonData
 
 @MainActor
 public final class MainTabBarCoordinator: Coordinator {
-    var childCoordinators: [Coordinator] = []
-    let tabBarController: UITabBarController
-    var onLogout: (() -> Void)?
+    public var childCoordinators: [Coordinator] = []
+    public let tabBarController: UITabBarController
+    public var onLogout: (() -> Void)?
 
     private let repository: SilentMoonRepository
 
@@ -25,7 +25,7 @@ public final class MainTabBarCoordinator: Coordinator {
         self.repository = repository
     }
 
-    func start() {
+    public func start() {
         tabBarController.viewControllers = [
             makeHomeTab(),
             makeSleepTab(),
@@ -105,33 +105,33 @@ public final class MainTabBarCoordinator: Coordinator {
 
 extension MainTabBarCoordinator: ContentNavigating {
 
-    func showMorning() {
+    public  func showMorning() {
         let controller = CoursesDetailViewController()
         controller.coordinator = self
         activeNavigationController?.pushViewController(controller, animated: true)
     }
 
-    func showMusicPage(item titleLabel: String) {
+    public  func showMusicPage(item titleLabel: String) {
         let controller = MusicPageController()
         controller.titleLabel = titleLabel
         controller.coordinator = self
         activeNavigationController?.pushViewController(controller, animated: true)
     }
 
-    func showMusicPage2(item titleLabel: String) {
+    public func showMusicPage2(item titleLabel: String) {
         let controller = MusicSleepPageController()
         controller.titleLabel = titleLabel
         controller.coordinator = self
         activeNavigationController?.pushViewController(controller, animated: true)
     }
 
-    func showMusicList() {
+    public  func showMusicList() {
         let controller = MusicListViewController()
         controller.coordinator = self
         activeNavigationController?.pushViewController(controller, animated: true)
     }
 
-    func showSearchPage() {
+    public func showSearchPage() {
         let viewModel = SearchViewModel(
             usecases: SearchUseCaseImpl(repository: repository)
         )
@@ -140,17 +140,17 @@ extension MainTabBarCoordinator: ContentNavigating {
         activeNavigationController?.pushViewController(controller, animated: true)
     }
 
-    func dismissMusicPage() {
+    public func dismissMusicPage() {
         activeNavigationController?.popViewController(animated: true)
     }
 
-    func showSleepyStory() {
+    public  func showSleepyStory() {
         let controller = SleepyStoryController()
         controller.coordinator = self
         activeNavigationController?.pushViewController(controller, animated: true)
     }
 
-    func playOptionPage() {
+    public func playOptionPage() {
         let controller = PlayOptionViewController()
         controller.coordinator = self
         activeNavigationController?.pushViewController(controller, animated: true)

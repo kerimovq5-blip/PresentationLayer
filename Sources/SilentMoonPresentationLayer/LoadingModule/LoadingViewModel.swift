@@ -23,7 +23,7 @@ public final class LoadingViewModel {
     }
 
     var onStateChange: (() -> Void)?
-    var onError: ((AppError<ApiErrorEnvelope>) -> Bool)?
+   public var onError: ((AppError<ApiErrorEnvelope>) -> Bool)?
 
     private let action: () async -> Result<Void, Error>
     private var loadTask: Task<Void, Never>?
