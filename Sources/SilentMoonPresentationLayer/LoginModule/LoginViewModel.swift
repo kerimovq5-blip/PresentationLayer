@@ -27,7 +27,7 @@ public final class LoginViewModel {
     }
     var onStateChange: (() -> Void)?
     
-   public var onEmailNotVerified: ((_ email: String) -> Void)?
+    var onEmailNotVerified: ((_ email: String) -> Void)?
     
    public weak var navigation : LoginNavigation?
     

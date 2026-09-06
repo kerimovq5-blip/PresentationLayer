@@ -10,6 +10,9 @@ import Foundation
 public final class GetStartedViewModel {
     public  weak var navigation : GetStartedNavigation?
     
+    public init () {
+        
+    }
     func logOutTapped() {
         navigation?.backToMain()
     }

@@ -9,7 +9,10 @@ import Foundation
 @MainActor
  public final class StartViewModel {
      public weak var navigation : StartNavigation?
-    
+     
+    public init() {
+         
+     }
     func singUpTap() {
         navigation?.showSignUp()
     }
