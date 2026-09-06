@@ -13,7 +13,7 @@ enum ReminderViewModelsState {
 }
 
 @MainActor
-final class ReminderViewModels {
+public final class ReminderViewModels {
     
     private(set) var state: ReminderViewModelsState = .idle {
         didSet { onStateChange?() }

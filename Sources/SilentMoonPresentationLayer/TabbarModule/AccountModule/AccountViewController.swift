@@ -9,9 +9,9 @@
 import UIKit
 import SilentMoonDomain
 
-final class AccountViewController: UIViewController {
+public final class AccountViewController: UIViewController {
 
-    var onLogoutTapped: (() -> Void)?
+    public  var onLogoutTapped: (() -> Void)?
 
     private let repository: SilentMoonRepository
 

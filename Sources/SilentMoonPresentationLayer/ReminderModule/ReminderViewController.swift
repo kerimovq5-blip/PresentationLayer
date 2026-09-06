@@ -7,13 +7,13 @@
 
 import UIKit
 
-final class ReminderViewController: UIViewController {
+public final class ReminderViewController: UIViewController {
     var coordinator: AuthCoordinator?
     private let stateModel: ReminderViewModels
     private let weekLabels = ReminderDayItem.weeknames
     private var selectedIndexes: Set<Int> = []
 
-    init(stateModel: ReminderViewModels) {
+    public init(stateModel: ReminderViewModels) {
         self.stateModel = stateModel
         super.init(nibName: nil, bundle: nil)
     }

@@ -8,8 +8,8 @@
 import UIKit
 import AVFoundation
 
-final class MusicPageController: UIViewController {
-    var coordinator: ContentNavigating?
+public final class MusicPageController: UIViewController {
+    public var coordinator: ContentNavigating?
 
     var titleLabel: String = ""
     var subtitleText: String = "7 DAYS OF CALM"

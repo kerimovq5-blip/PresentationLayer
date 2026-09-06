@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class SleepyStoryController: UIViewController {
+public final class SleepyStoryController: UIViewController {
     
     var coordinator: ContentNavigating?
     

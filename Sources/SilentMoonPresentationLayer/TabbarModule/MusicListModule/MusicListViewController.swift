@@ -7,9 +7,9 @@
 
 import UIKit
 
-final class MusicListViewController: UIViewController {
+public final class MusicListViewController: UIViewController {
 
-    var coordinator: ContentNavigating?
+    public  var coordinator: ContentNavigating?
 
     private enum MusicSegment: Int, CaseIterable {
         case allSounds

@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class WelcomeSleepyiewController: UIViewController {
+public final class WelcomeSleepyiewController: UIViewController {
     
     var coordinator: ContentNavigating?
     

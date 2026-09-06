@@ -1,6 +1,6 @@
 import UIKit
 
-final class ChooseTopicViewController: UIViewController {
+public final class ChooseTopicViewController: UIViewController {
     
    
     private let viewModel: ChooseTopicViewModel

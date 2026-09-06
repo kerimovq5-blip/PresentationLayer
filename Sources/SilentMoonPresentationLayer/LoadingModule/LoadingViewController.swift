@@ -7,12 +7,12 @@
 
 import UIKit
 
-final class LoadingViewController: UIViewController {
+public final class LoadingViewController: UIViewController {
     private let viewModel: LoadingViewModel
 
     var onFinished: (() -> Void)?
 
-    init(viewModel: LoadingViewModel) {
+   public init(viewModel: LoadingViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }

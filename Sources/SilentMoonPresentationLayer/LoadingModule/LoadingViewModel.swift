@@ -16,7 +16,7 @@ enum LoadingViewModelState {
 }
 
 @MainActor
-final class LoadingViewModel {
+public final class LoadingViewModel {
 
     private(set) var state: LoadingViewModelState = .idle {
         didSet { onStateChange?() }
@@ -28,7 +28,7 @@ final class LoadingViewModel {
     private let action: () async -> Result<Void, Error>
     private var loadTask: Task<Void, Never>?
 
-    init(action: @escaping () async -> Result<Void, Error>) {
+    public init(action: @escaping () async -> Result<Void, Error>) {
         self.action = action
     }
 

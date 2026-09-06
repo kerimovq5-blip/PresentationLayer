@@ -10,14 +10,14 @@ import SilentMoonDomain
 import SilentMoonData
 
 @MainActor
-final class MainTabBarCoordinator: Coordinator {
+public final class MainTabBarCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     let tabBarController: UITabBarController
     var onLogout: (() -> Void)?
 
     private let repository: SilentMoonRepository
 
-    init(
+    public  init(
         tabBarController: UITabBarController,
         repository: SilentMoonRepository
     ) {

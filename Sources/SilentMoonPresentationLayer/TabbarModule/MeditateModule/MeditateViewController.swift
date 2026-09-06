@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class MeditateViewController: UIViewController {
+public final class MeditateViewController: UIViewController {
     
     private let sectionViews = MeditateSectionModels.dummyData
     private let collectionViews = MeditateCollectionModels.meditateData

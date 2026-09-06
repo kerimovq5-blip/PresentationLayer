@@ -25,7 +25,7 @@ public final class ChooseTopicViewModel {
     
     private let usecases: TopicsUseCases
     
-    init(usecases: TopicsUseCases) {
+   public init(usecases: TopicsUseCases) {
         self.usecases = usecases
     }
     
