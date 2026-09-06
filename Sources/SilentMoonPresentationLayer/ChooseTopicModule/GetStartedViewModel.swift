@@ -7,8 +7,8 @@
 
 import Foundation
 @MainActor
-final class GetStartedViewModel {
-    weak var navigation : GetStartedNavigation?
+public final class GetStartedViewModel {
+    public  weak var navigation : GetStartedNavigation?
     
     func logOutTapped() {
         navigation?.backToMain()

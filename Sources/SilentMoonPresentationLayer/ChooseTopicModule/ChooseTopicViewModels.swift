@@ -12,7 +12,7 @@ enum ChooseTopicViewModelState {
 }
 
 @MainActor
-final class ChooseTopicViewModel {
+public final class ChooseTopicViewModel {
     
     private(set) var state: ChooseTopicViewModelState = .idle {
         didSet {
@@ -22,7 +22,7 @@ final class ChooseTopicViewModel {
     
     var onStateChange: (() -> Void)?
     
-    weak var navigation: ChooseTopicNavigation?
+    public  weak var navigation: ChooseTopicNavigation?
     
     private let usecases: TopicsUseCases
     

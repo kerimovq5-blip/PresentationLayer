@@ -18,7 +18,7 @@ enum LoginViewModelState {
 }
 
 @MainActor
-final class LoginViewModel {
+public final class LoginViewModel {
     var email: String = ""
     var password: String = ""
     

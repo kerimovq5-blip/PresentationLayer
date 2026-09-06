@@ -7,7 +7,7 @@
 
 import Foundation
 @MainActor
- final class StartViewModel {
+ public final class StartViewModel {
     weak var navigation : StartNavigation?
     
     func singUpTap() {

@@ -18,7 +18,7 @@ enum SignUpViewModelState {
 }
 
 @MainActor
-final class SignUpViewModel {
+public final class SignUpViewModel {
 
     var name: String = ""
     var email: String = ""
