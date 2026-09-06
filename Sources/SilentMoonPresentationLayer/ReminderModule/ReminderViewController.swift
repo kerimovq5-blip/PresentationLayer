@@ -8,7 +8,7 @@
 import UIKit
 
 public final class ReminderViewController: UIViewController {
-    var coordinator: AuthCoordinator?
+   public var coordinator: AuthCoordinator?
     private let stateModel: ReminderViewModels
     private let weekLabels = ReminderDayItem.weeknames
     private var selectedIndexes: Set<Int> = []

@@ -18,7 +18,7 @@ enum CourseDetailViewModelState {
 }
 
 @MainActor
-final class CourseDetailViewModel {
+public final class CourseDetailViewModel {
     
     private(set) var state: CourseDetailViewModelState = .idle {
         didSet {
@@ -31,7 +31,7 @@ final class CourseDetailViewModel {
     
     private let repository: SilentMoonRepository
     
-    init(repository: SilentMoonRepository) {
+    public init(repository: SilentMoonRepository) {
         self.repository = repository
     }
     

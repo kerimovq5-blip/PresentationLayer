@@ -8,7 +8,7 @@
 import UIKit
 
 public final class PlayOptionViewController: UIViewController {
-    var coordinator: ContentNavigating?
+    public var coordinator: ContentNavigating?
     
     private let relatedData = RelatedCollectionModel.relatedData
     

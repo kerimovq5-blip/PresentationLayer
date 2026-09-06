@@ -8,13 +8,13 @@
 import UIKit
 import AVFoundation
 
-final class MusicSleepPageController: UIViewController {
-    var coordinator: ContentNavigating?
+public final class MusicSleepPageController: UIViewController {
+    public var coordinator: ContentNavigating?
 
-    var titleLabel: String = ""
-    var subtitleText: String = "Sleep Music"
-    var audioURL: URL?
-    var totalDuration: TimeInterval = 45 * 60
+    public var titleLabel: String = ""
+    public var subtitleText: String = "Sleep Music"
+    public var audioURL: URL?
+    public var totalDuration: TimeInterval = 45 * 60
 
     private var player: AVPlayer?
     private var timeObserverToken: Any?

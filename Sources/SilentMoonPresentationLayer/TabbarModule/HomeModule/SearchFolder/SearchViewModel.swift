@@ -19,7 +19,7 @@ enum SearchViewModelState {
 }
 
 @MainActor
-final class SearchViewModel {
+public final class SearchViewModel {
 
     private(set) var state: SearchViewModelState = .idle {
         didSet { onStateChange?() }
@@ -30,13 +30,13 @@ final class SearchViewModel {
     }
 
     var onStateChange: (() -> Void)?
-    var onResultsChange: (() -> Void)?
+    public  var onResultsChange: (() -> Void)?
 
     private let usecases: SearchUseCases
     private var currentRequestID = 0
     private var searchDebounceTimer: Timer?
 
-    init(usecases: SearchUseCases) {
+    public  init(usecases: SearchUseCases) {
         self.usecases = usecases
     }
 

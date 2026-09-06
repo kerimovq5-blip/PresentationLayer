@@ -7,11 +7,11 @@
 
 import UIKit
 
-final class CoursesDetailViewController: UIViewController {
-    var coordinator : ContentNavigating?
+public final class CoursesDetailViewController: UIViewController {
+    public var coordinator : ContentNavigating?
     private enum VoiceTab : Int , CaseIterable {
         case male , female
-        var title: String {
+        public  var title: String {
             switch self {
             case .male:
                 return "Male Voice"

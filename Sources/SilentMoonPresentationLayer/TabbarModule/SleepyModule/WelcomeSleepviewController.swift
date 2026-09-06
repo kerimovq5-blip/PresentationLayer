@@ -9,7 +9,7 @@ import UIKit
 
 public final class WelcomeSleepyiewController: UIViewController {
     
-    var coordinator: ContentNavigating?
+    public   var coordinator: ContentNavigating?
     
     private lazy var frameImageGroup: UIImageView = {
         let imageView = UIImageView()

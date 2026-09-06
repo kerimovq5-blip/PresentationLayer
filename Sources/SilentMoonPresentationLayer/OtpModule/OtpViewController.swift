@@ -11,11 +11,11 @@ public final class OtpViewController: UIViewController {
 
     private let viewModel: OtpViewModel
 
-    var email: String {
+ public  var email: String {
         get { viewModel.email }
         set { viewModel.email = newValue }
     }
-    var userName: String {
+   public var userName: String {
         get { viewModel.userName }
         set { viewModel.userName = newValue }
     }

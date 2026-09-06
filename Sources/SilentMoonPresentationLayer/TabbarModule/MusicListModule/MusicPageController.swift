@@ -11,10 +11,10 @@ import AVFoundation
 public final class MusicPageController: UIViewController {
     public var coordinator: ContentNavigating?
 
-    var titleLabel: String = ""
-    var subtitleText: String = "7 DAYS OF CALM"
-    var audioURL: URL?
-    var totalDuration: TimeInterval = 45 * 60
+    public var titleLabel: String = ""
+    public  var subtitleText: String = "7 DAYS OF CALM"
+    public  var audioURL: URL?
+    public var totalDuration: TimeInterval = 45 * 60
 
     private var player: AVPlayer?
     private var timeObserverToken: Any?

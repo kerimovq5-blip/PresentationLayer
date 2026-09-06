@@ -9,7 +9,7 @@ import UIKit
 
 public final class SleepyStoryController: UIViewController {
     
-    var coordinator: ContentNavigating?
+    public var coordinator: ContentNavigating?
     
     private let sectionViews = MeditateSectionModels.dummyData
     private let collectionViews = SleepyStoryModels.storyData

@@ -30,7 +30,7 @@ public final class SignUpViewModel {
     }
     
     var onStateChange: (() -> Void)?
-    var onRegisterSucceeded: ((_ email: String, _ name: String) -> Void)?
+    public var onRegisterSucceeded: ((_ email: String, _ name: String) -> Void)?
     
    public weak var navigation : SingUpNavigation?
 

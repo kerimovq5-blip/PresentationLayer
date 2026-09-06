@@ -7,12 +7,12 @@
 
 import UIKit
 import SilentMoonDomain
-final class SearchPageController: UIViewController {
-    var coordinator: ContentNavigating?
+public final class SearchPageController: UIViewController {
+    public  var coordinator: ContentNavigating?
 
     private let viewModel: SearchViewModel
 
-    init(viewModel: SearchViewModel) {
+    public init(viewModel: SearchViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
