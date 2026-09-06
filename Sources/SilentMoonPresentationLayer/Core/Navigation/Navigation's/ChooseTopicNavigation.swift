@@ -7,6 +7,6 @@
 
 import Foundation
 @MainActor
-protocol ChooseTopicNavigation: AnyObject {
+public protocol ChooseTopicNavigation: AnyObject {
     func showReminder()
 }

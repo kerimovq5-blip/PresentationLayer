@@ -62,6 +62,7 @@ public final class LoginViewModel {
         switch result {
         case .success:
             self.state = .success
+            self.navigation?.finishAuth()
         case .failure(let error):
             let appError = self.asAppError(error)
             if appError.backendCode == "EMAIL_NOT_VERIFIED" {
