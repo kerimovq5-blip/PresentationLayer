@@ -100,7 +100,7 @@ public final class LogInViewController: UIViewController {
         return button
     }()
 
-    override func viewDidLoad() {
+    public  override func viewDidLoad() {
         super.viewDidLoad()
         setupHierarchy()
         setupLayout()

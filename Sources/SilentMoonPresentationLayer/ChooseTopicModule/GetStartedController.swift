@@ -92,12 +92,12 @@ public final class GetStartedController: UIViewController {
         return UIBarButtonItem(customView: button)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+   public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.rightBarButtonItem = logOutButton
     }
     
-    override func viewDidLoad() {
+   public override func viewDidLoad() {
         super.viewDidLoad()
         setupHierarchy()
         setupLayout()

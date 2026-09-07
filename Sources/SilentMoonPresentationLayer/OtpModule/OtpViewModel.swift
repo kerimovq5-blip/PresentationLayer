@@ -1,33 +1,26 @@
-//
-//  OtpViewModel.swift
-//  SilentMoon
-//
-//  Created by Kerimov Qehreman on 05.08.26.
-//
-
 import Foundation
 import SilentMoonDomain
-
+ 
 public enum OtpViewModelState {
     case idle
     case verifying
     case verifySucceeded
     case invalidInput(String)
-    case verifyFailed(AppError<ApiErrorEnvelope>)
+    case verifyFailed(DomainError)
     case resending
     case resendSucceeded(String)
-    case resendFailed(AppError<ApiErrorEnvelope>)
+    case resendFailed(DomainError)
 }
-
+ 
 @MainActor
 public final class OtpViewModel {
-
+ 
     public var email: String
     public var userName: String
     public var otp: String = ""
-
+ 
     private let usecases: AuthUseCases
-
+ 
      private(set) var state: OtpViewModelState = .idle {
         didSet { onStateChange?() }
     }
@@ -37,7 +30,7 @@ public final class OtpViewModel {
     public  weak var navigation : OtpNavigation?
     
     public var onVerifySucceeded: ((_ userName: String) -> Void)?
-
+ 
     public init(
         usecases: AuthUseCases,
         email: String = "",
@@ -47,7 +40,7 @@ public final class OtpViewModel {
         self.email = email
         self.userName = userName
     }
-
+ 
     public func verify() {
         guard otp.count == 6 else {
             state = .invalidInput("Zəhmət olmasa 6 rəqəmli kodu daxil edin.")
@@ -68,12 +61,12 @@ public final class OtpViewModel {
                 self.state = .verifySucceeded
                 self.navigation?.getStarted(name: self.userName)
             case .failure(let error):
-                self.state = .verifyFailed(self.asAppError(error))
+                self.state = .verifyFailed(self.asDomainError(error))
             }
         }
     
     
-
+ 
     public func resendOtp() {
         state = .resending
         Task {
@@ -89,10 +82,10 @@ private func handleResend(result: Result<ResendOtpResponseEntity, Error>) {
         let message = response.message
         self.state = .resendSucceeded(message)
     case .failure(let error):
-        self.state = .resendFailed(self.asAppError(error))
+        self.state = .resendFailed(self.asDomainError(error))
     }
 }
-    private func asAppError(_ error: Error) -> AppError<ApiErrorEnvelope> {
-        (error as? AppError<ApiErrorEnvelope>) ?? .unknown(error)
+    private func asDomainError(_ error: Error) -> DomainError {
+        (error as? DomainError) ?? .unexpected
     }
 }

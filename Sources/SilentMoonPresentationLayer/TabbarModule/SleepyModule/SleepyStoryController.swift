@@ -141,12 +141,12 @@ public final class SleepyStoryController: UIViewController {
         return controller
     }()
 
-    override func viewWillAppear(_ animated: Bool) {
+    public   override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
     }
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         setupConstraints()
@@ -225,7 +225,7 @@ public final class SleepyStoryController: UIViewController {
             
     }
 
-    override func viewDidLayoutSubviews() {
+    public  override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         let height = collectionView.collectionViewLayout.collectionViewContentSize.height
         if height > 0 {
@@ -235,7 +235,7 @@ public final class SleepyStoryController: UIViewController {
 }
 
 extension SleepyStoryController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == sectionCollectionView {
             if selectedIndexes.contains(indexPath.item) { return }
 
@@ -254,7 +254,7 @@ extension SleepyStoryController: UICollectionViewDelegate {
 }
 
 extension SleepyStoryController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == sectionCollectionView {
             return sectionViews.count
         } else {
@@ -262,7 +262,7 @@ extension SleepyStoryController: UICollectionViewDataSource {
         }
     }
             
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == sectionCollectionView {
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: MeditateSectionCell.identifier,
@@ -291,7 +291,7 @@ extension SleepyStoryController: UICollectionViewDataSource {
 }
 
 extension SleepyStoryController: UICollectionViewDelegateFlowLayout {
-    func collectionView(
+    public  func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
@@ -309,7 +309,7 @@ extension SleepyStoryController: UICollectionViewDelegateFlowLayout {
         }
     }
     
-    func collectionView(
+    public func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         minimumInteritemSpacingForSectionAt section: Int
@@ -317,7 +317,7 @@ extension SleepyStoryController: UICollectionViewDelegateFlowLayout {
         AppLayout.spacing.value
     }
     
-    func collectionView(
+    public  func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         minimumLineSpacingForSectionAt section: Int
@@ -325,7 +325,7 @@ extension SleepyStoryController: UICollectionViewDelegateFlowLayout {
         AppLayout.spacing.value
     }
     
-    func collectionView(
+    public func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         insetForSectionAt section: Int

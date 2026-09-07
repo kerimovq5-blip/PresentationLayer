@@ -21,7 +21,7 @@ public final class LoadingViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func viewDidLoad() {
+    public  override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .clear
         bindViewModel()

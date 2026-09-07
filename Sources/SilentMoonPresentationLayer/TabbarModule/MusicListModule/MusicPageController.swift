@@ -147,7 +147,7 @@ public final class MusicPageController: UIViewController {
         return label
     }()
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
         setupView()
@@ -155,14 +155,14 @@ public final class MusicPageController: UIViewController {
         configurePlayer()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
+    public  override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
+    public  override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         navigationController?.navigationBar.shadowImage = nil

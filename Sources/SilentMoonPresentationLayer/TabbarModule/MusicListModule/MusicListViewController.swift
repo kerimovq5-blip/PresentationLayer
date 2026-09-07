@@ -96,7 +96,7 @@ public final class MusicListViewController: UIViewController {
         return table
     }()
 
-    override func viewDidLoad() {
+    public  override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         setupHierarchy()
@@ -157,11 +157,11 @@ public final class MusicListViewController: UIViewController {
 }
 
 extension MusicListViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         filteredItems.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: MusicListViewCell.identifier,
             for: indexPath
@@ -175,7 +175,7 @@ extension MusicListViewController: UITableViewDataSource {
 }
 
 extension MusicListViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
         guard indexPath.row < filteredItems.count else { return }
@@ -184,7 +184,7 @@ extension MusicListViewController: UITableViewDelegate {
         coordinator?.showMusicPage(item: story.title)
     }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    public  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
 }

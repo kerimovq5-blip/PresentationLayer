@@ -34,7 +34,7 @@ public final class AccountViewController: UIViewController {
         return button
     }()
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .backgroundSecondary
         title = "Account"

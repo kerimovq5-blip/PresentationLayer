@@ -114,7 +114,7 @@ public final class MeditateViewController: UIViewController {
         return controller
     }()
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         setupConstraints()
@@ -192,7 +192,7 @@ public final class MeditateViewController: UIViewController {
 }
 
 extension MeditateViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard collectionView == sectionCollectionView else { return }
 
         if selectedIndexes.contains(indexPath.item) { return }
@@ -207,7 +207,7 @@ extension MeditateViewController: UICollectionViewDelegate {
 }
 
 extension MeditateViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == sectionCollectionView {
             return sectionViews.count
         } else {
@@ -215,7 +215,7 @@ extension MeditateViewController: UICollectionViewDataSource {
         }
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == sectionCollectionView {
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: MeditateSectionCell.identifier,
@@ -246,7 +246,7 @@ extension MeditateViewController: UICollectionViewDataSource {
 }
 
 extension MeditateViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(
+    public  func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
@@ -258,7 +258,7 @@ extension MeditateViewController: UICollectionViewDelegateFlowLayout {
         return CGSizeMake(sectionWidth, sectionHeight)
     }
 
-    func collectionView(
+    public  func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         minimumInteritemSpacingForSectionAt section: Int
@@ -266,7 +266,7 @@ extension MeditateViewController: UICollectionViewDelegateFlowLayout {
         AppLayout.spacing.value
     }
 
-    func collectionView(
+    public  func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         minimumLineSpacingForSectionAt section: Int
@@ -274,7 +274,7 @@ extension MeditateViewController: UICollectionViewDelegateFlowLayout {
         AppLayout.spacing.value
     }
 
-    func collectionView(
+    public  func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         insetForSectionAt section: Int

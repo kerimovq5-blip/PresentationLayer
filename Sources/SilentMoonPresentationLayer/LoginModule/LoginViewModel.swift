@@ -1,21 +1,15 @@
-//
-//  LoginViewModel.swift
-//  SilentMoon
-//
-//  Created by Kerimov Qehreman on 05.08.26.
-//
 
 import Foundation
 import SilentMoonDomain
-
+ 
 enum LoginViewModelState {
     case idle
     case loading
     case success
     case invalidInput(String)
-    case requestFailed(AppError<ApiErrorEnvelope>)
+    case requestFailed(DomainError)
 }
-
+ 
 @MainActor
 public final class LoginViewModel {
     var email: String = ""
@@ -63,17 +57,18 @@ public final class LoginViewModel {
             self.state = .success
             self.navigation?.finishAuth()
         case .failure(let error):
-            let appError = self.asAppError(error)
-            if appError.backendCode == "EMAIL_NOT_VERIFIED" {
+            let domainError = self.asDomainError(error)
+            if domainError.code == "EMAIL_NOT_VERIFIED" {
                 self.onEmailNotVerified?(self.email)
             } else {
-                self.state = .requestFailed(appError)
+                self.state = .requestFailed(domainError)
                 
             }
         }
     }
     
-    private func asAppError(_ error: Error) -> AppError<ApiErrorEnvelope> {
-        (error as? AppError<ApiErrorEnvelope>) ?? .unknown(error)
+    private func asDomainError(_ error: Error) -> DomainError {
+        (error as? DomainError) ?? .unexpected
     }
 }
+ 

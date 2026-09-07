@@ -13,7 +13,7 @@ enum SignUpViewModelState {
     case loading
     case success
     case invalidInput(String)
-    case requestFailed(AppError<ApiErrorEnvelope>)
+    case requestFailed(DomainError)
 }
 
 @MainActor
@@ -69,11 +69,11 @@ public final class SignUpViewModel {
             self.state = .success
             self.onRegisterSucceeded?(self.email, self.name)
         case .failure(let error):
-            self.state = .requestFailed(self.asAppError(error))
+            self.state = .requestFailed(self.asDomainError(error))
         }
     }
-    
-    private func asAppError(_ error: Error) -> AppError<ApiErrorEnvelope> {
-        (error as? AppError<ApiErrorEnvelope>) ?? .unknown(error)
+    private func asDomainError(_ error: Error) -> DomainError {
+        (error as? DomainError) ?? .unexpected
     }
+    
 }

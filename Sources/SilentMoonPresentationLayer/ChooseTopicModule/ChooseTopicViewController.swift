@@ -73,7 +73,7 @@ public final class ChooseTopicViewController: UIViewController {
 
     private lazy var continueButton = AppFactory.continueButton()
 
-    override func viewDidLoad() {
+   public override func viewDidLoad() {
         super.viewDidLoad()
         setupHierarchy()
         setupLayout()
@@ -198,12 +198,12 @@ public final class ChooseTopicViewController: UIViewController {
 }
 
 extension ChooseTopicViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView,
+    public func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
         topics.count
     }
     
-    func collectionView(_ collectionView: UICollectionView,
+    public func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: "cell",
@@ -217,12 +217,18 @@ extension ChooseTopicViewController: UICollectionViewDataSource {
 }
 
 extension ChooseTopicViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    public func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
         selectedTopicIds.insert(topics[indexPath.item].backendId)
         updateContinueButton()
     }
 
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+    public func collectionView(
+        _ collectionView: UICollectionView,
+        didDeselectItemAt indexPath: IndexPath
+    ) {
         selectedTopicIds.remove(topics[indexPath.item].backendId)
         updateContinueButton()
     }

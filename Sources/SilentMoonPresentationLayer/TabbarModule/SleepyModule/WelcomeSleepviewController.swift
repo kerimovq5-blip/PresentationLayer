@@ -31,12 +31,12 @@ public final class WelcomeSleepyiewController: UIViewController {
         return button
     }()
     
-    override func viewWillAppear(_ animated: Bool) {
+    public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
     }
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         setupHierarchy()
         setupLayout()

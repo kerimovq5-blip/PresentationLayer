@@ -123,7 +123,7 @@ public final class PlayOptionViewController: UIViewController {
         return collection
     }()
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         setupHierarchy()
         setupLayout()
@@ -188,11 +188,11 @@ public final class PlayOptionViewController: UIViewController {
 }
 
 extension PlayOptionViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return relatedData.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: RelatedCollectionCell.identifier,
             for: indexPath
@@ -203,13 +203,13 @@ extension PlayOptionViewController: UICollectionViewDataSource, UICollectionView
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    public  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         let item = relatedData[indexPath.item]
         coordinator?.showMusicPage(item: item.title)
     }
     
-    func collectionView(
+    public func collectionView(
         _ collectionView: UICollectionView,
         viewForSupplementaryElementOfKind kind: String,
         at indexPath: IndexPath

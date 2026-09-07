@@ -81,7 +81,7 @@ public final class OtpViewController: UIViewController {
         return button
     }()
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .backgroundSecondary
         setupHierarchy()

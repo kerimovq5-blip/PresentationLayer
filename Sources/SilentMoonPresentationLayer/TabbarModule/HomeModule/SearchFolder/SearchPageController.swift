@@ -118,7 +118,7 @@ public final class SearchPageController: UIViewController {
         return stack
     }()
 
-    override func viewDidLoad() {
+    public  override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         setupHierarchy()
@@ -226,11 +226,11 @@ public final class SearchPageController: UIViewController {
 }
 
 extension SearchPageController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.results.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "resultCell", for: indexPath)
         let item = viewModel.results[indexPath.row]
 
@@ -246,7 +246,7 @@ extension SearchPageController: UITableViewDataSource {
 }
 
 extension SearchPageController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let item = viewModel.results[indexPath.row]
 

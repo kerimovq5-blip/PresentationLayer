@@ -146,7 +146,7 @@ public final class CoursesDetailViewController: UIViewController {
           return stack
       }()
     
-    override func viewDidLoad() {
+   public override func viewDidLoad() {
         super.viewDidLoad()
         setupHierarchy()
         setupLayout()

@@ -1,20 +1,13 @@
-//
-//  CourseViewModels.swift
-//  SilentMoon
-//
-//  Created by Kerimov Qehreman on 19.08.26.
-//
-
 import Foundation
 import SilentMoonDomain
-
+ 
 @MainActor
 enum CourseViewModelsState {
     case idle
     case loading
     case success
     case loaded
-    case requestFailed(AppError<ApiErrorEnvelope>)
+    case requestFailed(DomainError)
     
 }
 @MainActor
@@ -47,12 +40,13 @@ final class CourseViewModels {
             case .success:
                 self.state = .success
             case .failure(let error):
-                let appError = self.asAppError(error)
+                let appError = self.asDomainError(error)
                 self.state = .requestFailed(appError)
             }
         }
     }
-    private func asAppError(_ error: Error) -> AppError<ApiErrorEnvelope> {
-        (error as? AppError<ApiErrorEnvelope>) ?? .unknown(error)
+    private func asDomainError(_ error: Error) -> DomainError {
+        (error as? DomainError) ?? .unexpected
     }
 }
+ 

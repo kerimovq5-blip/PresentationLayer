@@ -8,7 +8,7 @@ enum ReminderViewModelsState {
     case success
     case deleted
     case invalidInput(String)
-    case requestFailed(AppError<ApiErrorEnvelope>)
+    case requestFailed(DomainError)
 }
 
 @MainActor
@@ -108,7 +108,7 @@ public final class ReminderViewModels {
             self.currentReminder = reminders.first
             self.state = .success
         case .failure(let error):
-            self.state = .requestFailed(self.asAppError(error))
+            self.state = .requestFailed(self.asDomainError(error))
         }
     }
     
@@ -118,7 +118,7 @@ public final class ReminderViewModels {
             self.currentReminder = reminder
             self.state = .success
         case .failure(let error):
-            self.state = .requestFailed(self.asAppError(error))
+            self.state = .requestFailed(self.asDomainError(error))
         }
     }
 
@@ -128,7 +128,7 @@ public final class ReminderViewModels {
             self.currentReminder = nil
             self.state = .deleted
         case .failure(let error):
-            self.state = .requestFailed(self.asAppError(error))
+            self.state = .requestFailed(self.asDomainError(error))
         }
     }
     
@@ -140,7 +140,7 @@ public final class ReminderViewModels {
         return true
     }
 
-    private func asAppError(_ error: Error) -> AppError<ApiErrorEnvelope> {
-        (error as? AppError<ApiErrorEnvelope>) ?? .unknown(error)
+    private func asDomainError(_ error: Error) -> DomainError {
+        (error as? DomainError) ?? .unexpected
     }
 }
